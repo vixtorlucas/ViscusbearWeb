@@ -1,0 +1,50 @@
+name: Congelar edição
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  congelar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+      - name: Construir a edição uma única vez
+        shell: bash
+        run: |
+          set -euo pipefail
+          V="${GITHUB_REF_NAME}"
+
+          if git ls-tree -d --name-only origin/main "versoes/${V}" | grep -q .; then
+            echo "versoes/${V} já existe; uma edição congelada nunca é sobrescrita."
+            exit 1
+          fi
+
+          bundle exec jekyll build \
+            --baseurl "/versoes/${V}" \
+            --config _config.yml,_config_arquivo.yml \
+            --destination "/tmp/${V}"
+
+          rm -rf "/tmp/${V}/versoes"
+          rm -rf "/tmp/${V}/assets/loops" \
+                 "/tmp/${V}/assets/enfeites"
+
+          git switch -C main origin/main
+          mkdir -p "versoes/${V}"
+          cp -r "/tmp/${V}/." "versoes/${V}/"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "versoes/${V}"
+          git commit -m "congela ${V}"
+          git push origin main

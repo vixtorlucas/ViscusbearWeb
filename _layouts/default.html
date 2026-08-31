@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    {% if site.arquivo %}
+      <meta name="robots" content="noindex">
+      <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    {% endif %}
+    <link rel="icon" href="{{ '/icones/favicon-32.png' | relative_url }}" sizes="32x32">
+    <link rel="icon" href="{{ '/icones/favicon-96.png' | relative_url }}" sizes="96x96">
+    <link rel="apple-touch-icon" href="{{ '/icones/icone-192.png' | relative_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400&display=swap">
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  </head>
+  <body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
+    {% if site.arquivo %}
+      <aside class="archive-strip" aria-label="Aviso de versão arquivada">
+        você está vendo a versão {{ site.arquivo_versao | remove_first: 'v' }}, de {{ site.arquivo_mes_ano }} — <a href="/">voltar pro presente</a>
+      </aside>
+    {% endif %}
+    {{ content }}
+  </body>
+</html>

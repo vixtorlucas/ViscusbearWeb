@@ -1,0 +1,13 @@
+title: Viscusbear
+description: O site pessoal de Vixtor.
+url: "https://viscusbear.com.br"
+baseurl: ""
+lang: pt-BR
+timezone: America/Fortaleza
+permalink: pretty
+exclude:
+  - ferramentas
+  - PROJECT_CONTEXT.md
+  - README.md
+  - Gemfile
+  - Gemfile.lock

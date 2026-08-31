@@ -1,0 +1,31 @@
+<div class="janela">
+  <header class="barra-topo">
+    <h1><a href="{{ '/' | relative_url }}" aria-label="Ir para a página inicial">~ VISCUSBEAR ~</a></h1>
+    <a class="px assinatura" href="{{ '/vixtor/' | relative_url }}">um site de Vixtor</a>
+  </header>
+  <main>
+    {% if include.avatar != false %}
+      <div class="moldura">
+        <img class="avatar" src="{{ '/icones/viscus-v1.png' | relative_url }}" width="72" height="96" alt="retrato 3x4 de pixel: o rosto do personagem de frente, óculos e capacete de obra amarelo">
+      </div>
+    {% endif %}
+    <p class="px aviso">{{ include.aviso }}</p>
+    {% unless include.voltar %}
+      <a class="instagram px" href="https://www.instagram.com/viscusbear/" rel="me noopener" target="_blank" aria-label="Viscusbear no Instagram (abre em nova aba)">
+        <span class="icone" aria-hidden="true">
+          <span class="icone-fita"><i></i><i></i><i></i><i></i><i></i><span class="icone-led"></span></span>
+          <span class="icone-lente"><span></span></span>
+        </span>
+      </a>
+    {% endunless %}
+    {% if include.voltar %}
+      <a class="px link-miolo" href="{{ '/' | relative_url }}">voltar para o início</a>
+    {% else %}
+      <a class="px link-miolo" href="{{ '/versoes/' | relative_url }}">histórico de versões (1)</a>
+    {% endif %}
+  </main>
+  <footer class="rodape px">
+    este site foi criado em <time datetime="2026-09-05">05/09/2026</time>
+    · versão 1 · esta página vai virar arquivo
+  </footer>
+</div>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vixtor · Viscusbear</title>
+    {% if site.arquivo %}
+      <meta name="robots" content="noindex">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap">
+      <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+    {% endif %}
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  </head>
+  <body>
+    {% if site.arquivo %}
+      <aside class="archive-strip" aria-label="Aviso de versão arquivada">
+        você está vendo a versão {{ site.arquivo_versao | remove_first: 'v' }}, de {{ site.arquivo_mes_ano }} — <a href="/">voltar pro presente</a>
+      </aside>
+    {% endif %}
+  </body>
+</html>

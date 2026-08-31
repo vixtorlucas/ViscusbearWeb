@@ -1,0 +1,35 @@
+---
+layout: default
+title: Vixtor
+description: Sobre Vixtor, quem escreve o site Viscusbear.
+body_class: pagina-vixtor
+---
+<div class="janela janela-vixtor">
+  <header class="barra-topo barra-vixtor">
+    <h1>~ VIXTOR ~</h1>
+    <a class="px assinatura" href="{{ '/' | relative_url }}">voltar para viscusbear</a>
+  </header>
+
+  <main class="main-vixtor">
+    <div class="dupla">
+      <div class="moldura-corpo">
+        <div class="corpo-girando" role="img" aria-label="personagem Viscusbear de corpo inteiro girando"></div>
+      </div>
+
+      <article class="artigo-vixtor">
+        <header class="cabecalho-entrada px">
+          <span>QUEM ESCREVE</span>
+          <time datetime="{{ site.data.vixtor.data.iso }}">{{ site.data.vixtor.data.texto }}</time>
+        </header>
+        <p>{{ site.data.vixtor.corpo }}</p>
+        <p class="assinatura-vixtor px">{{ site.data.vixtor.assinatura }}</p>
+      </article>
+    </div>
+
+    <div class="barra-versoes px">
+      <a class="px" href="{{ '/versoes/' | relative_url }}">histórico de versões (1)</a>
+    </div>
+  </main>
+
+  <footer class="rodape rodape-vixtor px">versão 1 · sobre quem escreve</footer>
+</div>
