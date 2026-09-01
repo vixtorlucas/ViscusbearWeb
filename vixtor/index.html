@@ -27,7 +27,7 @@ body_class: pagina-vixtor
     </div>
 
     <div class="barra-versoes px">
-      <a class="px" href="{{ '/versoes/' | relative_url }}">histórico de versões (1)</a>
+      <a class="px" href="{% if site.arquivo %}/versoes/{% else %}{{ '/versoes/' | relative_url }}{% endif %}">histórico de versões (1)</a>
     </div>
   </main>
 

@@ -18,7 +18,7 @@
 
 ## Experiência da v1
 
-A home mostra, nesta ordem: barra de topo com o título clicável que leva à página inicial, avatar com capacete, aviso de construção, ícone de câmera que leva ao Instagram `@viscusbear`, link para o histórico e rodapé com a data 05/09/2026. `/vixtor/` é a página sobre quem escreve, com sprite animado e uma única entrada que será reescrita a cada versão. `/versoes/` e `/livro/` são stubs curtos com a mesma skin e link de volta.
+A home mostra, nesta ordem: barra de topo com o título clicável que leva à página inicial, avatar com capacete, aviso de construção, ícone de câmera que leva ao Instagram `@viscusbear`, link para o histórico e rodapé com a data 31/08/2026. `/vixtor/` é a página sobre quem escreve, com sprite animado e uma única entrada que será reescrita a cada versão. `/versoes/` e `/livro/` são stubs curtos com a mesma skin e link de volta.
 
 ## Regras que não devem ser quebradas
 

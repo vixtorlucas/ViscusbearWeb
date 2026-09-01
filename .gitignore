@@ -1,5 +1,185 @@
+# =====================================================================
+#  viscusbear.com.br — .gitignore
+#  Copie este arquivo para a RAIZ do repositório do site.
+#
+#  Regra de ouro: só entra aqui o que é (a) gerado automaticamente,
+#  (b) segredo, ou (c) fonte pesada que não precisa ir ao ar.
+#  Se estiver em dúvida, NÃO ignore — arquivo perdido é pior que
+#  repositório grande.
+# =====================================================================
+
+
+# ---------------------------------------------------------------------
+#  Jekyll — o que a build gera
+# ---------------------------------------------------------------------
 _site/
 .jekyll-cache/
 .jekyll-metadata
-vendor/
+.sass-cache/
 
+# ATENÇÃO — NÃO ignore `versoes/`.
+# As edições congeladas são HTML committado de propósito: são o arquivo
+# permanente do site. Se `versoes/` cair no .gitignore, todas as versões
+# antigas somem no próximo deploy. Esta é a pior falha possível
+# neste projeto específico.
+
+
+# ---------------------------------------------------------------------
+#  Ruby / Bundler
+# ---------------------------------------------------------------------
+.bundle/
+vendor/
+vendor/bundle/
+
+# `Gemfile.lock` NÃO é ignorado de propósito: ele trava as versões exatas
+# das gems e é o que faz a build do GitHub Actions dar o mesmo resultado
+# que a sua máquina. Commite sempre.
+
+
+# ---------------------------------------------------------------------
+#  Node — só se um dia entrar alguma ferramenta
+# ---------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-store/
+.npm/
+
+
+# ---------------------------------------------------------------------
+#  Segredos — nada aqui pode ir para o GitHub, nunca
+# ---------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+.netrc
+_config.local.yml
+secrets.yml
+credentials.yml
+
+# Chaves de API (Last.fm, Cloudflare, etc.) vão em
+# GitHub → Settings → Secrets and variables → Actions.
+# Nunca em arquivo no repositório.
+
+
+# ---------------------------------------------------------------------
+#  Sistema operacional
+# ---------------------------------------------------------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+*.stackdump
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+.directory
+.Trash-*
+
+
+# ---------------------------------------------------------------------
+#  Editores e ferramentas
+# ---------------------------------------------------------------------
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.iml
+*.swp
+*.swo
+*.sublime-workspace
+.history/
+
+
+# ---------------------------------------------------------------------
+#  Fontes de design — ficam só na sua máquina
+# ---------------------------------------------------------------------
+# O site publica os PNGs exportados; os arquivos de origem não precisam
+# subir e são pesados.
+*.psd
+*.ai
+*.sketch
+*.fig
+*.xcf
+*.aseprite
+*.ase
+*.dc.html
+/design-fontes/
+Canvas setup with artboards/
+
+# ATENÇÃO — `assets/` e `icones/` NÃO são ignorados.
+# Os PNGs exportados (favicons, avatar, sprite) precisam ir ao ar.
+
+
+# ---------------------------------------------------------------------
+#  Mídia bruta — antes de virar loop
+# ---------------------------------------------------------------------
+# Os vídeos publicados (webm/mp4 pequenos, em assets/loops/) VÃO para o
+# repositório. Só os originais pesados ficam de fora.
+/midia-bruta/
+/originais/
+*.mov
+*.avi
+*.mkv
+*.wav
+*.aiff
+*.raw
+*.dng
+*.heic
+
+
+# ---------------------------------------------------------------------
+#  Rascunhos e conteúdo privado
+# ---------------------------------------------------------------------
+_drafts/
+_privado/
+/rascunhos/
+
+
+# ---------------------------------------------------------------------
+#  Temporários
+# ---------------------------------------------------------------------
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+*.log
+/tmp/
+.cache/
+
+
+# =====================================================================
+#  Arquivos que PRECISAM estar no repositório — nunca ignore:
+#
+#    CNAME                  o domínio; se sumir, o site cai para
+#                           usuario.github.io no próximo deploy
+#    .nojekyll              se algum dia servir arquivos com _ no nome
+#    Gemfile / Gemfile.lock reprodutibilidade da build
+#    _config.yml            configuração do site
+#    _data/                 a camada de dados viva
+#    versoes/               as edições congeladas
+#    assets/ · icones/      tudo que o navegador precisa baixar
+#    .github/workflows/     build e congelamento
+#    robots.txt · sitemap.xml · 404.html
+# =====================================================================
+
+# pasta de descarte local (mover em vez de apagar)
+_to_delete/

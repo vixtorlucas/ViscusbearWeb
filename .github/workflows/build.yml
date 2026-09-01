@@ -1,8 +1,12 @@
+# INATIVO desde a migração para o Cloudflare Pages (31/08/2026).
+# Quem constrói e publica o site agora é o Cloudflare Pages, direto do repositório.
+# Este workflow ficou só como caminho de volta para o GitHub Pages: ele não roda
+# sozinho, apenas quando disparado à mão em Actions -> Run workflow.
+# Se você não pretende voltar, pode apagar este arquivo.
+
 name: Build e deploy
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

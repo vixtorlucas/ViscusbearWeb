@@ -21,11 +21,11 @@
     {% if include.voltar %}
       <a class="px link-miolo" href="{{ '/' | relative_url }}">voltar para o início</a>
     {% else %}
-      <a class="px link-miolo" href="{{ '/versoes/' | relative_url }}">histórico de versões (1)</a>
+      <a class="px link-miolo" href="{% if site.arquivo %}/versoes/{% else %}{{ '/versoes/' | relative_url }}{% endif %}">histórico de versões (1)</a>
     {% endif %}
   </main>
   <footer class="rodape px">
-    este site foi criado em <time datetime="2026-09-05">05/09/2026</time>
+    este site foi criado em <time datetime="2026-08-31">31/08/2026</time>
     · versão 1 · esta página vai virar arquivo
   </footer>
 </div>

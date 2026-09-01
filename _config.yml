@@ -11,3 +11,7 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - testar.ps1
+  - _to_delete
+include:
+  - _headers
