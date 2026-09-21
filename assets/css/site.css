@@ -693,7 +693,8 @@ main {
   text-wrap: pretty;
 }
 
-.entrada-continuar { font-size: 11px; }
+/* "continuar lendo →": .px (8px no desktop, 16px no celular) — nada de tamanho próprio. */
+.entrada-continuar { margin: 0; }
 
 .enfeites-corpo {
   display: flex;
@@ -1610,6 +1611,7 @@ main {
 @media (max-width: 640px) {
   .entradas-vazio { font-size: 15px; line-height: 1.45; }
   .entrada-tags a { display: inline-block; padding: 10px 4px; }
+  .entrada-continuar a { display: inline-block; padding: 11px 0; }
   .comunidades-indice a { padding: 10px 0; }
   .entrada-foto-mini { max-width: none; }
 }
