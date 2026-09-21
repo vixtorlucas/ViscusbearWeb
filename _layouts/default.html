@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
-    {% capture desc %}{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | strip | truncate: 160 }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
+    {% capture desc %}{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | strip | truncatewords: 26 }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
     <meta name="description" content="{{ desc | strip | escape }}">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pt_BR">
