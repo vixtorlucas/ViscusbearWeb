@@ -1,0 +1,28 @@
+---
+layout: default
+body_class: pagina-v2 pagina-home pagina-entrada
+---
+{% comment %} A entrada abre no centro do portal: perfil, comunidades, enfeites e camada viva continuam nas laterais. {% endcomment %}
+{% capture corpo %}
+<article class="artigo-post">
+  <p class="post-meta"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%d/%m/%Y" }}</time></p>
+  <h2 class="post-titulo">{{ page.title }}</h2>
+  {% if page.foto %}
+    <figure class="post-foto">
+      <img src="{{ page.foto | relative_url }}" alt="{{ page.foto_alt | default: page.title }}">
+      {% if page.legenda %}<figcaption class="px">{{ page.legenda }}</figcaption>{% endif %}
+    </figure>
+  {% endif %}
+  {{ content }}
+  {% include tags-entrada.html tags=page.tags %}
+</article>
+{% endcapture %}
+<div class="janela-v2 janela-v2--home">
+  {% include topo-curta.html %}
+
+  {% include navbar-v2.html %}
+
+  {% include portal.html centro="post" corpo=corpo %}
+
+  {% include rodape-v2.html %}
+</div>

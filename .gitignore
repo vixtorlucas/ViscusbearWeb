@@ -183,3 +183,6 @@ _privado/
 
 # pasta de descarte local (mover em vez de apagar)
 _to_delete/
+
+# atalho local para subir o jekyll serve no Windows
+_rodar-local.bat

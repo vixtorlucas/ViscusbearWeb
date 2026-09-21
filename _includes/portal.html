@@ -1,0 +1,150 @@
+  {% assign comunidades = site.tags | sort %}
+  <main class="grade-portal">
+    <div class="ficha-compacta">
+      <div class="ficha-compacta-retrato">
+        <img src="{{ '/icones/viscus-v2.png' | relative_url }}" alt="retrato de pixel do rosto de viscusbear" width="72" height="96">
+      </div>
+      <div class="ficha-compacta-texto">
+        <p class="ficha-compacta-nome">viscusbear</p>
+        <p class="ficha-compacta-humor">humor: com dor no braço</p>
+      </div>
+    </div>
+
+    {% comment %} Coluna esquerda: perfil, comunidades e enfeites, mesma largura. {% endcomment %}
+    <div class="coluna-portal coluna-portal--esquerda">
+    <section class="caixa area-perfil">
+      <h2>PERFIL</h2>
+      <div class="perfil-corpo">
+        <div class="moldura">
+          <img class="avatar" src="{{ '/icones/viscus-v2.png' | relative_url }}" width="72" height="96" alt="retrato de pixel do rosto de viscusbear" style="image-rendering: pixelated;">
+        </div>
+        <dl class="perfil-ficha">
+          <dt>usuário:</dt>
+          <dd>Viscusbear</dd>
+          <dt>humor:</dt>
+          <dd>com dor no braço</dd>
+          <dt>local:</dt>
+          <dd>Brasil</dd>
+          <dt>desde:</dt>
+          <dd><time datetime="2026-08-31">31/08/2026</time></dd>
+        </dl>
+        <a class="px" href="{{ '/vixtor/' | relative_url }}">quem é o Vixtor →</a>
+      </div>
+    </section>
+
+    {% unless include.centro == "comunidades" %}
+    <section class="caixa area-comunidades" id="comunidades">
+      <h2><a class="caixa-titulo-link" href="{{ '/comunidades/' | relative_url }}">COMUNIDADES ({{ comunidades.size }})</a></h2>
+      {% if comunidades.size > 0 %}
+        <div class="comunidades-corpo">
+          {% for c in comunidades limit: 6 %}
+            <a class="comunidade-tile" href="{{ '/comunidades/' | relative_url }}#{{ c[0] | slugify }}">
+              <span class="comunidade-miniatura comunidade-miniatura--{{ forloop.index }}"></span>
+              <span class="comunidade-nome">{{ c[0] | replace: "_", " " }}</span>
+            </a>
+          {% endfor %}
+        </div>
+        <p class="caixa-pe"><a class="px" href="{{ '/comunidades/' | relative_url }}">ver todas</a></p>
+      {% else %}
+        <div class="caixa-corpo"><p>Nenhuma comunidade ainda. Cada #tag das entradas vira uma.</p></div>
+        <p class="caixa-pe"><a class="px" href="{{ '/comunidades/' | relative_url }}">ver comunidades</a></p>
+      {% endif %}
+    </section>
+    {% endunless %}
+
+    <section class="caixa area-enfeites area-redes">
+      <h2>REDES SOCIAIS</h2>
+      <div class="enfeites-corpo redes-corpo">
+        <a class="enfeite rede-link" href="https://www.instagram.com/viscusbear/" rel="me noopener" target="_blank" aria-label="Viscusbear no Instagram (abre em nova aba)">
+          <span class="icone" aria-hidden="true">
+            <span class="icone-fita"><i></i><i></i><i></i><i></i><i></i><span class="icone-led"></span></span>
+            <span class="icone-lente"><span></span></span>
+          </span>
+        </a>
+      </div>
+    </section>
+    </div>
+
+    {% comment %} Centro: todas as entradas ou todas as comunidades — a página cresce com o conteúdo. {% endcomment %}
+    <div class="coluna-portal coluna-portal--centro">
+    {% if include.centro == "post" %}
+    <section class="caixa area-diario area-post">
+      <div class="post-corpo">
+        {{ include.corpo }}
+      </div>
+      <p class="caixa-pe"><a class="px" href="{{ '/' | relative_url }}">← últimas entradas</a></p>
+    </section>
+    {% elsif include.centro == "comunidades" %}
+    <section class="caixa area-diario" id="lista-comunidades">
+      <h2>COMUNIDADES ({{ comunidades.size }})</h2>
+      {% if comunidades.size > 0 %}
+        <div class="comunidades-corpo comunidades-corpo--centro">
+          {% for c in comunidades %}
+            {% assign cor = forloop.index0 | modulo: 6 | plus: 1 %}
+            <a class="comunidade-tile" href="#{{ c[0] | slugify }}">
+              <span class="comunidade-miniatura comunidade-miniatura--{{ cor }}"></span>
+              <span class="comunidade-nome">{{ c[0] | replace: "_", " " }}</span>
+            </a>
+          {% endfor %}
+        </div>
+        {% for c in comunidades %}
+          <div class="comunidade-secao" id="{{ c[0] | slugify }}">
+            <h3 class="comunidade-secao-titulo">{{ c[0] | replace: "_", " " }}</h3>
+            <p class="comunidade-voltar"><a class="px" href="{{ '/comunidades/' | relative_url }}">← todas as comunidades</a></p>
+            <div class="diario-corpo">
+              {% for e in c[1] %}
+                {% include entrada-item.html entrada=e %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="caixa-corpo"><p>Nenhuma comunidade ainda. Cada #tag usada numa entrada vira uma comunidade aqui.</p></div>
+      {% endif %}
+      <p class="caixa-pe"><a class="px" href="{{ '/' | relative_url }}">← últimas entradas</a></p>
+    </section>
+    {% else %}
+    <section class="caixa area-diario">
+      <h2>ÚLTIMAS ENTRADAS ({{ site.posts.size }})</h2>
+      <div class="diario-corpo">
+        {% for e in site.posts %}
+          {% include entrada-item.html entrada=e %}
+        {% else %}
+          <p class="entradas-vazio">Nenhuma entrada ainda. A primeira aparece aqui assim que for publicada.</p>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+    </div>
+
+    <div class="coluna-portal coluna-portal--direita">
+    <section class="caixa area-camada">
+      <h2>VISCUSBEAR JUKEBOX</h2>
+      <div class="camada-viva-corpo">
+        {% assign tocando = site.data.tocando %}
+        {% assign capa = site.static_files | where: "path", tocando.capa | first %}
+        <div class="bloco-vivo">
+          <span class="bloco-vivo-titulo">TOCANDO AGORA</span>
+          <div class="tocando-capa">
+            {% if capa %}
+              <img src="{{ tocando.capa | relative_url }}" alt="capa do álbum {{ tocando.album }}, de {{ tocando.artista }}" width="96" height="96">
+            {% else %}
+              <span class="tocando-capa-vazia px" aria-hidden="true">{{ tocando.album }}</span>
+            {% endif %}
+          </div>
+          <p>{{ tocando.artista }} — <em>{{ tocando.musica }}</em></p>
+          <p class="px">álbum: {{ tocando.album }}</p>
+          <div class="barra-musica"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="caixa area-arquiva">
+      <h2>ESTE SITE SE ARQUIVA</h2>
+      <div class="arquiva-corpo">
+        <p>Você está na edição mais nova. As anteriores continuam no ar, exatamente como eram.</p>
+        <a class="px" href="{{ '/versoes/' | relative_url }}">histórico de versões ({{ site.data.versoes.size }})</a>
+      </div>
+    </section>
+    </div>
+  </main>

@@ -27,9 +27,9 @@ body_class: pagina-vixtor
     </div>
 
     <div class="barra-versoes px">
-      <a class="px" href="{% if site.arquivo %}/versoes/{% else %}{{ '/versoes/' | relative_url }}{% endif %}">histórico de versões (1)</a>
+      <a class="px" href="{% if site.arquivo %}/versoes/{% else %}{{ '/versoes/' | relative_url }}{% endif %}">histórico de versões ({{ site.data.versoes.size }})</a>
     </div>
   </main>
 
-  <footer class="rodape rodape-vixtor px">versão 1 · sobre quem escreve</footer>
+  <footer class="rodape rodape-vixtor px">versão {{ site.data.versoes.size }} · sobre quem escreve</footer>
 </div>

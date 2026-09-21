@@ -1,0 +1,25 @@
+---
+layout: default
+title: Entradas
+description: Tudo que Vixtor publicou no site, texto e foto, das mais novas para as mais antigas.
+body_class: pagina-v2 pagina-entradas
+---
+<div class="janela-v2 janela-v2--entradas">
+  {% include topo-curta.html %}
+  {% include navbar-v2.html %}
+
+  <main class="main-diario-indice">
+    <section class="caixa">
+      <h2>TODAS AS ENTRADAS ({{ site.posts.size }})</h2>
+      <div class="diario-ano-corpo">
+        {% for e in site.posts %}
+          {% include entrada-item.html entrada=e %}
+        {% else %}
+          <p class="entradas-vazio">Nenhuma entrada ainda. A primeira aparece aqui assim que for publicada.</p>
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+
+  {% include rodape-v2.html %}
+</div>

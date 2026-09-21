@@ -1,0 +1,6 @@
+<nav class="navbar" aria-label="menu principal">
+  <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>início</a>
+  <a href="{{ '/comunidades/' | relative_url }}"{% if page.url == '/comunidades/' %} aria-current="page"{% endif %}>comunidades</a>
+  <a href="{{ '/projetos/' | relative_url }}"{% if page.url == '/projetos/' %} aria-current="page"{% endif %}>projetos</a>
+  <a href="{{ '/versoes/' | relative_url }}"{% if page.url == '/versoes/' %} aria-current="page"{% endif %}>versões</a>
+</nav>

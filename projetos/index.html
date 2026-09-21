@@ -1,0 +1,47 @@
+---
+layout: default
+title: Projetos
+description: Os projetos em que Vixtor está trabalhando.
+body_class: pagina-v2 pagina-projetos
+---
+<div class="janela-v2 janela-v2--projetos">
+  {% include topo-curta.html %}
+  {% include navbar-v2.html %}
+
+  <main class="main-projetos">
+    <section class="caixa">
+      <h2>NO QUE EU ESTOU TRABALHANDO</h2>
+      <div class="projetos-corpo">
+        {% for p in site.data.projetos %}
+          <article class="projeto-item">
+            <div class="projeto-icone" style="background: repeating-conic-gradient({{ p.cor_a }} 0% 25%, {{ p.cor_b }} 0% 50%) 0 0 / 8px 8px;"></div>
+            <div>
+              <p class="projeto-titulo">
+                <a href="{{ p.href }}">{{ p.titulo }}</a>
+                <span class="px projeto-edicao">edição {{ p.edicao }}</span>
+              </p>
+              <p class="projeto-tecnica px">{{ p.plataforma }} · {{ p.linguagem }} · desde <time datetime="{{ p.data }}">{{ p.data | date: "%d/%m/%Y" }}</time>{% if p.peso %} · {{ p.peso }}{% endif %}</p>
+              <p class="projeto-descricao">{{ p.descricao }}</p>
+              <p class="projeto-links">
+                {% for link in p.links %}{% unless forloop.first %} · {% endunless %}<a href="{% if link.href contains '://' %}{{ link.href }}{% else %}{{ link.href | relative_url }}{% endif %}">{{ link.texto }}</a>{% endfor %}
+              </p>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <aside>
+      <section class="caixa">
+        <h2>CONTRATAR</h2>
+        <div class="contratar-corpo">
+          <p>Aceito de dois a quatro projetos por ano. iOS nativo apenas.</p>
+          <a class="px" href="{{ '/vixtor/' | relative_url }}">quem é o Vixtor →</a>
+        </div>
+      </section>
+      <p class="projetos-nota px">cada projeto aqui tem número de edição — igual às versões do site</p>
+    </aside>
+  </main>
+
+  {% include rodape-v2.html %}
+</div>

@@ -1,0 +1,16 @@
+---
+layout: default
+title: Comunidades
+description: As comunidades da Viscusbear — cada tag das entradas vira uma comunidade.
+body_class: pagina-v2 pagina-home pagina-comunidades
+---
+{% comment %} Mesmo portal da home; só o centro troca: no lugar das últimas entradas, a lista de comunidades. {% endcomment %}
+<div class="janela-v2 janela-v2--home">
+  {% include topo-curta.html %}
+
+  {% include navbar-v2.html %}
+
+  {% include portal.html centro="comunidades" %}
+
+  {% include rodape-v2.html %}
+</div>

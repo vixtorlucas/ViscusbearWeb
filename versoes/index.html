@@ -1,6 +1,46 @@
 ---
 layout: default
 title: Histórico de versões
-description: O arquivo de versões da Viscusbear está em construção.
+description: Todas as edições da Viscusbear, congeladas para sempre.
+body_class: pagina-v2 pagina-versoes-v2
 ---
-{% include janela-v1.html aviso="O HISTÓRICO DE VERSÕES AINDA NÃO EXISTE." avatar=false voltar=true %}
+{% assign linhas = site.data.versoes | reverse %}
+<div class="janela-v2 janela-v2--versoes">
+  {% include topo-curta.html %}
+  {% include navbar-v2.html %}
+
+  <main class="main-versoes">
+    <section class="caixa">
+      <h2>HISTÓRICO DE VERSÕES — {{ site.data.versoes.size }} EDIÇÕES NO AR</h2>
+      <div class="tabela-versoes" role="table" aria-label="edições do site">
+        <div class="tabela-versoes-linha tabela-versoes-cab" role="row">
+          <span class="tabela-versoes-cel" role="columnheader">ver.</span>
+          <span class="tabela-versoes-cel" role="columnheader">nome</span>
+          <span class="tabela-versoes-cel" role="columnheader">data</span>
+          <span class="tabela-versoes-cel" role="columnheader">ver</span>
+        </div>
+        {% for v in linhas %}
+          <div class="tabela-versoes-linha" role="row">
+            <span class="tabela-versoes-cel tabela-versoes-cel--ver" role="cell">{{ v.versao }}</span>
+            <span class="tabela-versoes-cel tabela-versoes-cel--nome" role="cell">
+              {{ v.nome }}
+              {% if forloop.first %}<span class="selo-novo px">NOVO!</span>{% endif %}
+            </span>
+            <span class="tabela-versoes-cel tabela-versoes-cel--data" role="cell">{% if v.data != "" %}<time datetime="{{ v.data }}">{{ v.data | date: "%d/%m/%y" }}</time>{% else %}—{% endif %}</span>
+            <span class="tabela-versoes-cel tabela-versoes-cel--abrir" role="cell">
+              {% if forloop.first %}
+                <a href="{{ '/' | relative_url }}">abrir</a>
+              {% else %}
+                <a href="{{ '/versoes/' | append: v.versao | append: '/' | relative_url }}">abrir</a>
+              {% endif %}
+            </span>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <p class="versoes-nota">Toda edição marcada com tag fica congelada e continua no ar para sempre em <span class="px">/versoes/vN/</span>. Nada aqui é apagado — só empilhado.</p>
+  </main>
+
+  {% include rodape-v2.html %}
+</div>

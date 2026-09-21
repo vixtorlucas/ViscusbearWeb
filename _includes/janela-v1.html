@@ -1,6 +1,6 @@
 <div class="janela">
   <header class="barra-topo">
-    <h1><a href="{{ '/' | relative_url }}" aria-label="Ir para a página inicial">~ VISCUSBEAR ~</a></h1>
+    <h1><a href="{{ '/' | relative_url }}" aria-label="Ir para a página inicial">VISCUSBEAR</a></h1>
     <a class="px assinatura" href="{{ '/vixtor/' | relative_url }}">um site de Vixtor</a>
   </header>
   <main>
@@ -21,7 +21,7 @@
     {% if include.voltar %}
       <a class="px link-miolo" href="{{ '/' | relative_url }}">voltar para o início</a>
     {% else %}
-      <a class="px link-miolo" href="{% if site.arquivo %}/versoes/{% else %}{{ '/versoes/' | relative_url }}{% endif %}">histórico de versões (1)</a>
+      <a class="px link-miolo" href="{% if site.arquivo %}/versoes/{% else %}{{ '/versoes/' | relative_url }}{% endif %}">histórico de versões ({{ site.data.versoes.size }})</a>
     {% endif %}
   </main>
   <footer class="rodape px">

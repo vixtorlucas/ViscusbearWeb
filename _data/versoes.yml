@@ -1,6 +1,10 @@
 - versao: v1
   nome: "Em construção"
-  data: 2026-08-31
+  data: "2026-08-31"
+  peso: "79 KB"
+  o_que_mudou: "Só o nome, um botão e a promessa. Viscusbear ainda não era nada."
+- versao: v2
+  nome: "O portal"
+  data: "2026-09-21"
   peso: "a medir"
-  nota: "Só o nome, um botão e a promessa. Viscusbear ainda não era nada."
-
+  o_que_mudou: "O portal: últimas entradas, comunidades por tag, projetos e histórico de versões — o site deixou de ser só uma janela."

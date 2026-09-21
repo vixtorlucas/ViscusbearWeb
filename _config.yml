@@ -13,5 +13,17 @@ exclude:
   - Gemfile.lock
   - testar.ps1
   - _to_delete
+  - CLAUDE.md
+  - _rodar-local.bat
 include:
   - _headers
+
+# Entradas (texto e foto num lugar só). Cada arquivo em _posts/ vira uma
+# entrada em /entradas/<slug>/; as tags viram comunidades em /comunidades/.
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: entrada
+      permalink: /entradas/:title/

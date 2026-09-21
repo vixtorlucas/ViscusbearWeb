@@ -1,6 +1,16 @@
 ---
 layout: default
-title: Em construção
-description: "Site pessoal de Vixtor. Versão 1: em construção."
+title:
+description: O site pessoal de Vixtor — o portal, com as últimas entradas, comunidades, projetos e histórico de versões.
+body_class: pagina-v2 pagina-home
+image: /icones/viscus-v2.png
 ---
-{% include janela-v1.html aviso="ESTE SITE ESTÁ EM CONSTRUÇÃO." %}
+<div class="janela-v2 janela-v2--home">
+  {% include topo-curta.html %}
+
+  {% include navbar-v2.html %}
+
+  {% include portal.html centro="entradas" %}
+
+  {% include rodape-v2.html %}
+</div>

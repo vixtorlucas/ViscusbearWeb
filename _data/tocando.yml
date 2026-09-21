@@ -1,0 +1,6 @@
+# Bloco "TOCANDO AGORA" da home. Para trocar: edite as quatro linhas.
+# A capa só aparece se o arquivo existir em `capa` (senão mostra o nome do álbum).
+artista: "Boy Harsher"
+musica: "Break Me"
+album: "GET MEAN"
+capa: "/assets/img/tocando/boy-harsher-get-mean.jpg"

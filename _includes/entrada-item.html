@@ -1,0 +1,11 @@
+{% assign e = include.entrada %}
+<article class="entrada-diario">
+  <p class="entrada-meta px"><time datetime="{{ e.date | date: '%Y-%m-%d' }}">{{ e.date | date: "%d/%m/%Y" }}</time>{% if e.foto %} · foto{% endif %}</p>
+  <h3 class="entrada-titulo"><a href="{{ e.url | relative_url }}">{{ e.title }}</a></h3>
+  {% if e.foto %}
+    <a class="entrada-foto-mini" href="{{ e.url | relative_url }}"><img src="{{ e.foto_mini | default: e.foto | relative_url }}" alt="{{ e.foto_alt | default: e.title }}" loading="lazy"></a>
+  {% endif %}
+  {% assign resumo = e.resumo | default: e.excerpt | strip_html | strip %}
+  {% if resumo != "" %}<p class="entrada-resumo">{{ resumo | truncatewords: 40 }}</p>{% endif %}
+  {% include tags-entrada.html tags=e.tags %}
+</article>

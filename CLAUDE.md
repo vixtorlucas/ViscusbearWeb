@@ -31,17 +31,24 @@ Corolário: **tudo que entra numa edição vira arqueologia permanente.** Um lin
 quebrado, uma data errada ou um bug de mobile congelam junto e ficam visíveis para
 sempre. Na dúvida, corte — o que não entra nesta edição entra na próxima sem custo.
 
-## Estado atual (01/09/2026)
+## Estado atual (21/09/2026)
 
-- **v1 "Em construção" está no ar** em https://viscusbear.com.br
-- **A tag `v1` ainda não existe.** O `congelar.yml` nunca rodou. `/versoes/` é um
-  stub que diz que o histórico ainda não existe.
-- Commit `4f13168` no clone local fecha a v1 (correções + data 31/08/2026 +
-  correção do link do histórico na edição congelada). **Falta dar push.**
-- Próximos passos, nesta ordem: `git push origin main` → conferir o site no ar →
-  `git tag v1 && git push origin v1` → conferir que `/versoes/v1/` abre → só então
-  começar a v2.
-- v2 = Fase 2 "O portal". Escopo ainda não fechado.
+- **v1 "Em construção" está congelada**: tag `v1` criada, `/versoes/v1/` commitada pelo
+  `congelar.yml` (commit "congela v1", 01/09/2026).
+- **v2 "O portal" está no `main`** (21/09/2026), ainda **sem tag**. Ela traz:
+  - portal em três colunas: esquerda (perfil, comunidades, redes sociais), centro
+    (últimas entradas / comunidades / entrada aberta), direita (camada viva, arquivo);
+  - **entradas** em `_posts/` (texto e foto juntos — o antigo diário + fotolog), layout
+    `entrada`, URL `/entradas/<slug>/`; modelo em `_drafts/modelo-de-entrada.md` (local);
+  - **comunidades** = tags das entradas, em `/comunidades/` (só a lista; `#tag` abre as
+    entradas daquela tag via `:target`, sem JS);
+  - fotos preparadas por `ferramentas/foto.py` (tira todo metadado, 1000px + mini 480px)
+    em `assets/img/entradas/`;
+  - "tocando agora" em `_data/tocando.yml`; projetos em `_data/projetos.yml`;
+  - `/vixtor/` voltou a ser a da v1 (pele e texto), fora do menu — acessível por
+    "um site de Vixtor" e "quem é o Vixtor".
+- Antes de `git tag v2`: medir o peso publicado e trocar `a medir` e `data: ""` em
+  `_data/versoes.yml`.
 
 ## Stack e publicação
 
@@ -104,6 +111,10 @@ Design e handoff hi-fi ficam **fora deste repositório**, em
    por edição). Um link que precisa escapar da edição congelada usa
    `{% if site.arquivo %}/caminho/{% else %}{{ '/caminho/' | relative_url }}{% endif %}`.
 10. **Português em tudo:** site, commits, comentários, nomes de arquivo.
+11. **O cabeçalho é fixo.** Barra de título + navbar têm o mesmo tamanho e a mesma
+    posição em todas as páginas do portal (início, comunidades, projetos, versões,
+    entradas). Toda página v2 usa `_includes/topo-curta.html` + `navbar-v2.html`, janela
+    de 1000px presa no topo. A única exceção é `/vixtor/`, que usa a pele da v1.
 
 ## Onde as decisões moram
 
